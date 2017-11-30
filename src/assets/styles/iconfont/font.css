@@ -1,0 +1,50 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('~assets/styles/iconfont/iconfont.eot');
+    src: url('~assets/styles/iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('~assets/styles/iconfont/iconfont.woff') format('woff'),
+    url('~assets/styles/iconfont/iconfont.ttf') format('truetype'),
+    url('~assets/styles/iconfont/iconfont.svg#iconfont') format('svg');    
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-weight: normal;
+    font-style: normal;   
+    font-size: 16px;
+    display: flex;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-atm:before { content: "\e6ba"; }
+
+.icon-toys:before { content: "\e6e1"; }
+
+.icon-shoes:before { content: "\e728"; }
+
+.icon-shouye:before { content: "\e6cb"; }
+
+.icon-yiban:before { content: "\e8da"; }
+
+.icon-manyi:before { content: "\e8db"; }
+
+.icon-bumanyi:before { content: "\e8dc"; }
+
+.icon-task-management:before { content: "\e829"; }
+
+.icon-password:before { content: "\e82b"; }
+
+.icon-kefu:before { content: "\e625"; }
+
+.icon-huanyihuan:before { content: "\e653"; }
+
+.icon-duorenhuiyi:before { content: "\e606"; }
+
+.icon-fenxiang:before { content: "\e607"; }
+
+.icon-xiazai:before { content: "\e615"; }
+
+.icon-yaoqinghaoyou:before { content: "\e61a"; }
+
+.icon-saoyisao:before { content: "\e62d"; }

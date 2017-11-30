@@ -1,0 +1,7 @@
+# 以下目录或者文件不会被提交至版本库
+node_modules/
+dist/test/
+dist/prod/
+npm-debug.log
+sftp-config.json
+package-lock.json

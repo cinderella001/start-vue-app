@@ -1,0 +1,109 @@
+// 基础样式
+
+// 常量
+@0: #000;
+@3: #333;
+@6: #666;
+@9: #999;
+@c: #ccc;
+@f: #fff;
+@d9: #d9d9d9;
+@f3: #f3f3f3;
+@red: #f23071;
+@blue: #4790cc;
+
+// 文本、边框和背景颜色
+.cl(@val){
+	color: @val;
+}
+.borC(@val){
+    border-color: @val;
+}
+.bgcl(@val){
+	background-color: @val;
+}
+
+// 字体、字号和附加效果
+.ff(@val: '微软雅黑'){
+	font-family: @val;
+}
+.fs(@size,@unit: px){
+	font-size: unit(@size,@unit);
+}
+.fw(@size:bold){
+	font-weight: @size;
+}
+
+// 1px边框
+.bor1(@color: @d9){
+	border: none;
+	position: relative;
+    &::after{
+        display: block;
+        content: '';
+        border: 1px solid @d9;
+        width: 200%;
+        height: 200%;
+        .bs;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: scale(0.5);      
+        transform-origin: left top;    
+    }
+}
+.bor1-top(@color: @d9){
+	border: none;
+	position: relative;
+    &::before{
+        display: block;
+        content: '';
+        width: 100%;
+        height: 1px;
+        .bgcl(@d9);
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: scaleY(0.5); 
+        transform-origin: 0 0;        
+    }
+}
+.bor1-bottom(@color: @d9){
+	border: none;
+	position: relative;
+    &::after{
+        display: block;
+        content: '';
+        width: 100%;
+        height: 1px;
+        .bgcl(@d9);
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transform: scaleY(0.5);     
+        transform-origin: 0 0;    
+    }
+}
+
+// 圆角
+.borR(@size: 5,@unit: px){
+	border-radius: unit(@size,@unit);
+}
+
+// 盒子类型
+.bs(@type: border-box){
+	box-sizing: @type;
+}
+
+// 层叠性
+.zIdx(@num){
+	z-index: @num;
+}
+
+// 背景图片
+.bgImg(@name){
+	background: url('../img/@{name}') no-repeat left top;
+}
+.bgSize(@x: 100%, @y: auto){
+	background-size: @x @y;
+}
