@@ -4,4 +4,3 @@ build/test/
 build/prod/
 npm-debug.log
 sftp-config.json
-package-lock.json
