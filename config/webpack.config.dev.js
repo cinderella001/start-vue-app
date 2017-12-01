@@ -1,13 +1,15 @@
 const path = require('path'),
     webpack = require('webpack'),
     merge = require('webpack-merge'),
+    baseConfig = require('./webpack.config.base.js'),
     env = process.env.NODE_ENV,
-    baseConfig = require('./webpack.config.base-all.js'),
-    express = require('express');
+    address = require('./address.js')[env],
+    express = require('express'),
+    OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = merge(baseConfig,{
     output: {
-        publicPath: '/dev/',
+        publicPath: address.projectURL,
         filename: '[name].js',
         chunkFilename: '[name].js'
     },
@@ -31,8 +33,8 @@ module.exports = merge(baseConfig,{
     devServer: {
         historyApiFallback: true,
         noInfo: true,
-        host: '10.1.1.124',
-        port: '8080',
+        host: address.host,
+        port: address.port,
         before: function(app){
             app.use('/mock',express.static('../mock'))
         }
@@ -45,14 +47,18 @@ module.exports = merge(baseConfig,{
 	plugins: [
 		new webpack.DefinePlugin({
 	        'process.env': {
-	            NODE_ENV: '"dev"',
-            	baseURL: "'http://localhost:3000'",
-                // baseURL: "'http://api.test.com'",
-            	// projectURL: "'http://project.test.com/app'"    
+	            NODE_ENV: JSON.stringify(env),
+                apiURL: JSON.stringify(address.apiURL),
+                projectURL: JSON.stringify(address.projectURL)
 	        }      
 	    }), 
 
-	    new webpack.NamedModulesPlugin()   
+	    new webpack.NamedModulesPlugin(),
+
+        new OpenBrowserPlugin({
+            url: address.browserUrl
+        })
     ]  
 });
+
 

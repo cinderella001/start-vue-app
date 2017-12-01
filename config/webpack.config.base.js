@@ -49,7 +49,8 @@ module.exports = {
             title: 'SPA', 
             template: path.join(__dirname, '../src/index.html'), 
             filename: 'index.html', 
-            inject: 'body'            
+            inject: 'body',
+            favicon: path.join(__dirname, '../favicon.ico')            
         })
     ]    
 }

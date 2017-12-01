@@ -4,7 +4,7 @@ import store from '../../store';
 import { token,contentType } from './globalVar';
 
 // 添加axios插件的全局配置
-axios.defaults.baseURL = process.env.baseURL;
+axios.defaults.baseURL = process.env.apiURL;
 axios.defaults.headers['Content-Type'] = contentType;
 
 // 添加axios插件的拦截器

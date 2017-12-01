@@ -1,8 +1,10 @@
 const path = require('path'),
-    webpack = require('webpack'),    
+    webpack = require('webpack'),
     merge = require('webpack-merge'),
+    baseConfig = require('./webpack.config.base.js'),
     env = process.env.NODE_ENV,
-    baseConfig = require('./webpack.config.base-all.js'),
+    address = require('./address.js')[env],
+    express = require('express'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -10,6 +12,13 @@ module.exports = merge(baseConfig,{
     entry: {
         vendor: ['vue','vue-router','vuex','axios','fastclick']
     },    
+
+    output: {
+        path: address.outputDir,
+        publicPath: address.projectURL,
+        filename: '[name].[chunkhash:8].js',
+        chunkFilename: '[name].[chunkhash:16].js'
+    },
 
     module: {
         rules: [
@@ -36,6 +45,14 @@ module.exports = merge(baseConfig,{
     },
 
 	plugins: [
+		new webpack.DefinePlugin({
+	        'process.env': {
+	            NODE_ENV: JSON.stringify(env),
+                apiURL: JSON.stringify(address.apiURL),
+                projectURL: JSON.stringify(address.projectURL)
+	        }      
+	    }), 
+
 	    new webpack.optimize.UglifyJsPlugin({
 	        sourceMap: true,
 	        compress: {
@@ -54,7 +71,17 @@ module.exports = merge(baseConfig,{
 
 	    new webpack.optimize.CommonsChunkPlugin({
 	        names: ['vendor','manifest'] 
-	    })
+	    }),
+
+	    new CleanWebpackPlugin(
+	        ['index.html','*.css','*.js'],
+	        {
+	            root: address.outputDir,
+	            verbose:  true,    
+	            dry: false,
+	            // exclude: []   
+	        }
+	    )
 	]         
 });
 
