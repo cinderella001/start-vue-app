@@ -37,8 +37,8 @@ npm install
     	|——acty		-- 活动页
 	|——mine		-- 个人页
         ...         
-	|——assets       -- 静态资源目录，包括图片、样式、脚本类库	
-	|——store	-- 状态管理目录
+    |——assets       	-- 静态资源目录，包括图片、样式、脚本类库	
+    |——store		-- 状态管理目录
 |——mock                 -- 虚拟数据配置目录	
 |——package.json		-- 项目配置文件	
 |——.babelrc	    	-- es6转码文件
