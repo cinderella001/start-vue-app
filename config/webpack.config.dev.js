@@ -40,6 +40,8 @@ module.exports = merge(baseConfig,{
         }
     },
 
+    devtool: 'cheap-module-eval-source-map',
+
     performance: {
         hints: false
     },

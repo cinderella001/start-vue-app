@@ -24,21 +24,21 @@ module.exports = {
 	test: {
         host: ipv4,
         port: '3000',
-        outputDir: path.resolve(__dirname, '../build/test'),
+        outputDir: path.resolve(__dirname, '../prod/test'),
         browserUrl: 'http://' + ipv4 + ':3000/test/index.html',
         apiURL: 'http://localhost:3000',
         // apiURL: 'http://api.test.com', // 线上测试环境的接口域名
         projectURL: '/test/',
         // projectURL: 'http://project.test.com/app/' // 线上测试环境的项目地址     
 	},
-    prod: {
+    normal: {
         host: ipv4,
         port: '3000',
-        outputDir: path.resolve(__dirname, '../build/prod'),
-        browserUrl: 'http://' + ipv4 + ':3000/prod/index.html',
+        outputDir: path.resolve(__dirname, '../prod/normal'),
+        browserUrl: 'http://' + ipv4 + ':3000/normal/index.html',
         apiURL: 'http://localhost:3000',
-        // apiURL: 'http://api.prod.com', // 线上生产环境的接口域名
-        projectURL: '/prod/',
-        // projectURL: 'http://project.prod.com/app/' // 线上生产环境的项目地址    
+        // apiURL: 'http://api.normal.com', // 线上正式环境的接口域名
+        projectURL: '/normal/',
+        // projectURL: 'http://project.normal.com/app/' // 线上正式环境的项目地址    
     },    
 }

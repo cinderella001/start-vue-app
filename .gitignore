@@ -1,6 +1,6 @@
 # 以下目录或者文件不会被提交至版本库
 node_modules/
-build/test/
-build/prod/
+prod/test/
+prod/normal/
 npm-debug.log
 sftp-config.json

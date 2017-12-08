@@ -5,13 +5,13 @@
   "author": "brandon <290730757@qq.com>",
   "private": true,
   "scripts": {
-    "mock": "json-server --port 3000 --watch mock/faker-data.js --m mock/middleware.js --static ./build",
+    "mock": "json-server --port 3000 --watch mock/faker-data.js --m mock/middleware.js --static ./prod",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --hot --config ./config/webpack.config.dev.js",
     "mockDev": "run-p mock dev",
-    "test": "cross-env NODE_ENV=test webpack --progress --hide-modules --config ./config/webpack.config.build.js",
+    "test": "cross-env NODE_ENV=test webpack --progress --hide-modules --config ./config/webpack.config.prod.js",
     "mockTest": "run-p mock test",
-    "prod": "cross-env NODE_ENV=prod webpack --progress --hide-modules --config ./config/webpack.config.build.js",
-    "mockProd": "run-p mock prod"
+    "normal": "cross-env NODE_ENV=normal webpack --progress --hide-modules --config ./config/webpack.config.prod.js",
+    "mockNormal": "run-p mock normal"
   },
   "dependencies": {
     "axios": "^0.17.1",
