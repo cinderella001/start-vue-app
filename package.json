@@ -17,7 +17,10 @@
     "axios": "^0.17.1",
     "fastclick": "^1.0.6",
     "vue": "^2.4.4",
+    "vue-axios": "^2.0.2",
     "vue-router": "^2.7.0",
+    "vue-scroller": "^2.2.4",
+    "vue2-animate": "^1.0.4",
     "vuex": "^2.4.0"
   },
   "devDependencies": {

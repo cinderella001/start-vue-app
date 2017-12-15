@@ -1,13 +1,17 @@
+import Vue from 'vue';
 import axios from 'axios';
-import qs from 'qs';
-import store from '../../store';
-import { token,contentType } from './globalVar';
+import VueAxios from 'vue-axios';
+import VueScroller from 'vue-scroller';
 
-// 添加axios插件的全局配置
+import qs from 'qs';
+import store from '../store';
+import { token,contentType } from './variable';
+
+/***********配置axios*************/
+// 修改全局属性
 axios.defaults.baseURL = process.env.apiURL;
 axios.defaults.headers['Content-Type'] = contentType;
-
-// 添加axios插件的拦截器
+// 添加拦截器
 axios.interceptors.request.use((config) => {
 	// 显示loading
 	store.commit('showLoading',true);
@@ -29,5 +33,6 @@ axios.interceptors.response.use((response) => {
 	return response;
 });
 
-// 导出变量
-export default axios;
+// 注册插件
+Vue.use(VueAxios, axios);
+Vue.use(VueScroller)

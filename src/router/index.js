@@ -4,8 +4,6 @@ Vue.use(Router) ;
 
 // 引入store
 import store from '../store';
-// 引入axios
-import axios from '../assets/js/custom-axios';
 
 // 同步加载路由
 import Login from '../components/login/login';
@@ -64,7 +62,7 @@ router.beforeEach((to,from,next) => {
 		if(store.state.myInfo){
 			next();
 		}else{
-			axios.post('/userInfo').then((res) => {
+			Vue.axios.post('/userInfo').then((res) => {
 		        let data = res.data.data;
 
 		        if(data){

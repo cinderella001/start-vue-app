@@ -10,7 +10,10 @@ const path = require('path'),
 
 module.exports = merge(baseConfig,{
     entry: {
-        vendor: ['vue','vue-router','vuex','axios','fastclick']
+        vendor: [
+            'vue','vue-router','vuex','axios','fastclick',
+            'vue-axios','vue-scroller'
+        ]
     },    
 
     output: {

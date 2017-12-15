@@ -1,6 +1,7 @@
 <style lang="less">
     @import '../assets/styles/normalize.css';
     @import '../assets/styles/iconfont/font.css';
+    @import '~vue2-animate/src/vue2-animate.less';
     @import '../assets/styles/common.less';
 </style>
 
@@ -47,7 +48,7 @@
                     return false;
                 }                    
             }            
-        } 
+        }
     }
 </script>
 

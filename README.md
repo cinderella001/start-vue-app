@@ -6,11 +6,13 @@ A simple CLI for scaffolding a web app with Vue.js.
 ``` 
 -vue
 -vue-router
+-vue-scroller
 -vuex
 -less
 -iconfont
 -es6
 -axios
+-animate
 -webpack
 -json-server
 -faker
@@ -37,7 +39,8 @@ npm install
     	|——acty		-- 活动页
 		|——mine		-- 个人页
         ...         
-	|——assets       -- 静态资源目录，包括图片、样式、脚本类库	
+	|——assets       -- 静态资源目录，包括图片、样式以及json文件
+    |——utils        -- 脚本工具库，包括Vue的插件、过滤器等js文件	
 	|——store		-- 状态管理目录
 |——mock             -- 虚拟数据配置目录	
 |——package.json		-- 项目配置文件	

@@ -4,20 +4,13 @@ import Vue from 'vue';
 import App from './components/App';
 // 引入路由配置文件
 import router from './router';
-// 引入状态管理文件
+// 引入vuex管理文件
 import store from './store';
 
-// 注册全局过滤器
-import GlobalFilter from './assets/js/globalFilter';
-for(let i in GlobalFilter){
-	Vue.filter(i,GlobalFilter[i]);
-}
-
-// 注册全局方法
-import GlobalMethod from './assets/js/globalMethod';
-for(let i in GlobalMethod){
-	Vue.prototype[i] = GlobalMethod[i];
-}
+// 配置插件
+import './utils/plugin';
+// 配置过滤器
+import './utils/filter';
 
 // 处理移动端点击事件的300毫秒延迟
 const FastClick = require('fastclick');
