@@ -1,27 +1,16 @@
-// 获取url中的相关参数
-const href = location.href,
-	idx = href.indexOf('#'),
-	search = location.search,
-	getQueryString = (name) => {
-	    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
-	    var r = search.substr(1).match(reg);
-	    if (r != null) {
-	        return unescape(r[2]);
-	    }
-	    return null;
-	};	
-const routerName = getQueryString('routerName'),
-	routerParams = getQueryString('routerParams'),
-	signURL = (idx > -1) ? href.substring(0,idx) : href;
+const uuidv1 = require('uuid/v1');
 
 // 获取本地的相关参数
 const contentType = 'application/x-www-form-urlencoded; charset=UTF-8',
-	token = localStorage.getItem('token');
+	token = localStorage.getItem('token'),
+	deviceId = localStorage.getItem('deviceId') || (() => {
+		let deviceId = uuidv1();
+		localStorage.setItem('deviceId',deviceId);
+		return deviceId;
+	})();	
 
 export {
-	routerName,
-	routerParams,
-	signURL,
 	contentType,
-	token
+	token,
+	deviceId
 }

@@ -4,7 +4,6 @@ const path = require('path'),
     baseConfig = require('./webpack.config.base.js'),
     env = process.env.NODE_ENV,
     address = require('./address.js')[env],
-    express = require('express'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     CleanWebpackPlugin = require('clean-webpack-plugin');
 
