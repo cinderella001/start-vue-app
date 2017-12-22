@@ -37,7 +37,7 @@ npm install
     	|——login	-- 登录页
     	|——index	-- 首页
     	|——acty		-- 活动页
-      	|——mine		-- 个人页
+      |——mine		-- 个人页
         ...         
     |——assets           -- 静态资源目录，包括图片、样式以及json文件
     |——utils            -- 脚本工具库，包括Vue的插件、过滤器等js文件	
