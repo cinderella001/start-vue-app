@@ -27,27 +27,27 @@ npm install
 
 ## Structure
 ```
-|——config           -- webpack配置目录
-|——src              -- 源文件目录
-    |——index.html 	-- 入口html文件
-    |——main.js 		-- 入口js文件
-    |——router		-- 路由配置目录
-    |——components	-- 组件目录
-    	|——App.vue  -- 根组件
-    	|——login	-- 登录页
-    	|——index	-- 首页
-    	|——acty		-- 活动页
-        |——mine		-- 个人页
-        ...         
-    |——assets       -- 静态资源目录，包括图片、样式以及json文件
-    |——utils        -- 脚本工具库，包括Vue的插件、过滤器等js文件	
-    |——store		-- 状态管理目录
-|——mock             -- 虚拟数据配置目录	
-|——package.json		-- 项目配置文件	
-|——.babelrc	    	-- es6转码文件
-|——README.md 		-- 使用文档
-|——favicon.ico 		-- chrome浏览器网站图标
-|——.gitignore		-- .gitignore配置文件
+|——config-- webpack配置目录
+|——src-- 源文件目录
+    |——index.htm-- 入口html文件
+    |——main.js-- 入口js文件
+    |——router-- 路由配置目录
+    |——components-- 组件目录
+    |——App.vue-- 根组件
+        |——login-- 登录页
+        |——index-- 首页
+        |——acty	-- 活动页
+        |——mine	-- 个人页
+    ...
+|——assets-- 静态资源目录，包括图片、样式以及json文件
+|——utils-- 脚本工具库，包括Vue的插件、过滤器等js文件
+|——store-- 状态管理目录
+|——mock-- 虚拟数据配置目录
+|——package.json-- 项目配置文件
+|——.babelrc- es6转码文件
+|——README.md--使用文档
+|——favicon.ico-- chrome浏览器网站图标
+|——.gitignore-- .gitignore配置文件
 ```
 
 ## Usage
