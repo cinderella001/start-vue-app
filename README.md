@@ -33,7 +33,7 @@ npm install
     |——main.js      -- 入口js文件
     |——router       -- 路由配置目录
     |——components   -- 组件目录
-        |——App.vue      -- 根组件
+        |——App.vue  -- 根组件
         |——login    -- 登录页
         |——index    -- 首页
         |——acty     -- 活动页
