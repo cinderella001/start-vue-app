@@ -50,8 +50,8 @@ module.exports = merge(baseConfig,{
 		new webpack.DefinePlugin({
 	        'process.env': {
 	            NODE_ENV: JSON.stringify(env),
-                apiURL: JSON.stringify(address.apiURL),
-                projectURL: JSON.stringify(address.projectURL)
+		    apiURL: JSON.stringify(address.apiURL),
+		    projectURL: JSON.stringify(address.projectURL)
 	        }      
 	    }), 
 
@@ -62,5 +62,3 @@ module.exports = merge(baseConfig,{
         })
     ]  
 });
-
-
