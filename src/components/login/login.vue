@@ -1,65 +1,48 @@
 <style lang="less" scoped>
     @import '../../assets/styles/base.less';
 
-    /*登录页面的私有样式*/
-    body{
-        .bgcl(@f3);
-    }
+    /*登录*/
     h3{
         margin-top: 3rem;
         text-align: center;
         .fs(34);
     }
+    
     .form{
         margin: 0.4rem;
-        display: flex;
-        flex-direction: column;
-        .cell{
-            &:not(:last-child){
-                margin-bottom: 0.4rem;
-            }
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .fs(24);
-            label{
-                margin-right: 0.4rem;
-                width: 2rem;
-                text-align: justify; 
-                text-align-last: justify;
-            }
-            input{         
-                flex: 1;                        
-                height: 0.6rem;
-            }
-            .submit{
-                width: 100%;
-                line-height: 0.8rem;
-                .fs(24);
-            }            
+          
+        .mint-cell{
+            margin: 0.2rem 0;
+            .bor1;
+        }
+
+        .mint-button{
+            display: block;
+            width: 100%;
         }
     }
 </style>
 
 <template>
     <div class="page-login">        
-        <!-- 一个简易的登录页表单 -->
-        <h3>{{msg}}</h3>
+        <!-- 一个简易的登录表单 -->
+        <h3>{{title}}</h3>
         <div class="form">
-            <div class="cell"><label for="name">用户名</label><input type="text" id="name" class="name" v-model="username"></div>
-            <div class="cell"><label for="passwd">密码</label><input type="text" id="passwd" class="passwd" v-model="passwd"></div>
-            <div class="cell"><button class="submit" @click="reqLogin">提交</button></div>
+            <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+            <mt-field label="密码" placeholder="请输入密码" type="password" v-model="passwd"></mt-field>      
+            <mt-button type="primary" @click="reqLogin">提交</mt-button>      
         </div>
     </div>
 </template>
 
 <script>
     import { mapState } from 'vuex';
+    import { Toast } from 'mint-ui';
 
     export default {
         data(){
             return {                
-                msg: '请先登录',
+                title: '请先登录',
                 username: '',
                 passwd: ''
             }
@@ -71,7 +54,10 @@
                     passwd = this.passwd;
 
                 if(!username || !passwd){
-                    alert('用户名或密码不能为空');
+                    Toast({
+                        message: '用户名或密码不能为空',
+                        duration: 2000
+                    });
                     return false;
                 }else{
                     return this.$http.post('/login',{
@@ -86,7 +72,10 @@
 
                         this.$router.replace('/index');
                     }).catch((res) => {
-                        alert('请先开启json-server');
+                        Toast({
+                            message: '请先开启json-server',
+                            duration: 2000
+                        });                        
                     });   
                 }                  
             }

@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import VueScroller from 'vue-scroller';
-
+import { Indicator } from 'mint-ui';
 import qs from 'qs';
 import store from '../store';
 import { contentType,token,deviceId } from './variable';
@@ -14,7 +13,7 @@ axios.defaults.headers['Content-Type'] = contentType;
 // 添加拦截器
 axios.interceptors.request.use((config) => {
 	// 显示loading
-	store.commit('showLoading',true);
+	Indicator.open();
 
 	// 在上传参数中添加令牌、版本号等参数
 	config.params = Object.assign(config.params || {},{token: token,version: '1.0',deviceId: deviceId});
@@ -25,14 +24,17 @@ axios.interceptors.request.use((config) => {
 	}
 
 	return config;
+},(error) => {
+    return Promise.reject(error);
 });
 axios.interceptors.response.use((response) => {
 	// 隐藏loading
-	store.commit('showLoading',false);
+	Indicator.close();
 
 	return response;
+},(error) => {
+    return Promise.reject(error);
 });
 
 // 注册插件
 Vue.use(VueAxios, axios);
-Vue.use(VueScroller)

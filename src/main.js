@@ -1,3 +1,9 @@
+// 引入调试工具
+if(process.env.myEnv != 'normal'){
+	let eruda = require('eruda');
+	eruda.init();
+}
+
 // 引入主模块
 import Vue from 'vue';
 // 引入根组件
@@ -7,6 +13,8 @@ import router from './router';
 // 引入vuex管理文件
 import store from './store';
 
+// 配置UI组件
+import './utils/component';
 // 配置插件
 import './utils/plugin';
 // 配置过滤器

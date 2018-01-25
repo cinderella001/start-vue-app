@@ -1,44 +1,44 @@
 <style lang="less" scoped>
     @import '../../assets/styles/base.less';
 
-    /*首页的私有样式*/
+    /*首页*/
     .statusBar{
+        margin: 1rem 0 0.8rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        h3{
-            text-align: center;
+
+        h3{          
             .fs(34);
         }
+        
         button{
-            margin-left: 20px;
-            line-height: 1em;
-            .fs(18);
+            margin-left: 0.2rem;
         }
     }
-    .icon{
-        display: flex;
-        justify-content: center;
-        i{
-            .fs(48);
-            color: @blue;
-        }     
-    }
-    .cover{
-        margin: 40px auto;
+
+    .iconfont{
         display: block;
-        width: 300px;
+        text-align: center;
+        .fs(48);
+        .cl(@blue);
+    }     
+
+    .cover{
+        margin: 0.8rem auto;
+        display: block;
+        width: 6rem;
     }
 </style>
 
 <template>
     <div class="page-index">      
-        <!-- 一个简易的首页状态栏 -->
+        <!-- 首页状态 -->
         <div class="statusBar">
-            <h3>{{msg + (myInfo? myInfo.username : '路人')}}</h3>
-            <button v-if="!myInfo" @click="$router.push('/login')">登录</button>            
+            <h3>{{title + (myInfo? myInfo.username : '路人')}}</h3>
+            <mt-button v-if="!myInfo" @click="$router.push('/login')">登录</mt-button>            
         </div>  
-        <div class="icon"><i class="iconfont icon-toys"></i></div>
+        <i class="iconfont icon-toys"></i>
         <img class="cover" src="~assets/img/cover.jpg" alt="" />
     </div>
 </template>
@@ -49,7 +49,7 @@
     export default {
         data(){
             return {                
-                msg: '你好啊，'
+                title: '你好啊，'
             }
         },
         computed: mapState([

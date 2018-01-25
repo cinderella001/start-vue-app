@@ -49,9 +49,10 @@ module.exports = merge(baseConfig,{
 	plugins: [
 		new webpack.DefinePlugin({
 	        'process.env': {
-	            NODE_ENV: JSON.stringify(env),
-		    apiURL: JSON.stringify(address.apiURL),
-		    projectURL: JSON.stringify(address.projectURL)
+                NODE_ENV: env == 'dev' ? JSON.stringify('development') : JSON.stringify('production'),
+                myEnv: JSON.stringify(env),
+                apiURL: JSON.stringify(address.apiURL),
+                projectURL: JSON.stringify(address.projectURL)
 	        }      
 	    }), 
 

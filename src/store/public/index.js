@@ -1,7 +1,6 @@
 // 创建一个对象来存储应用启动时的初始状态
 const state = {
-    myInfo: null,
-    showLoading: false    
+    myInfo: null  
 }
 
 // 创建一个对象来存储上述状态的派生值
@@ -13,15 +12,12 @@ const getters = {
 const mutations = {
     myInfo(state,payload){
         let myInfo = state.myInfo;
-        if(myInfo){
+        if(myInfo && payload){
             state.myInfo = Object.assign({},myInfo,payload);
         }else{
             state.myInfo = payload;
         }        
-    },
-    showLoading(state,payload){
-        state.showLoading = payload;
-    }                      
+    }                    
 }
 
 // 创建一个对象来存储状态变更的提交函数，接受一个与store实例具有相同方法和属性的context对象（但并不是store实例本身），这里使用ES2015的参数解构来简化代码，注意action函数可以包含任何异步操作

@@ -23,7 +23,7 @@ module.exports = {
 	test: {
         host: ipv4,
         port: '3000',
-        outputDir: path.resolve(__dirname, '../prod/test'),
+        outputDir: path.resolve(__dirname, '../prod/test'), // 输出到指定目录
         browserUrl: 'http://' + ipv4 + ':3000/test/index.html',
         apiURL: 'http://localhost:3000',
         // apiURL: 'http://api.test.com', // 线上测试环境的接口域名
@@ -33,7 +33,7 @@ module.exports = {
     normal: {
         host: ipv4,
         port: '3000',
-        outputDir: path.resolve(__dirname, '../prod/normal'),
+        outputDir: path.resolve(__dirname, '../prod/normal'), // 输出到指定目录
         browserUrl: 'http://' + ipv4 + ':3000/normal/index.html',
         apiURL: 'http://localhost:3000',
         // apiURL: 'http://api.normal.com', // 线上正式环境的接口域名

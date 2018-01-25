@@ -4,8 +4,16 @@
 @import './base.less';
 
 // 手动重置
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     font-family: sans-serif;
+    line-height: 1;
+}
+a{
+    text-decoration: none;
 }
 ul,li{
     list-style-type: none;
@@ -19,21 +27,20 @@ input{
 } 
 
 // 根组件
-.tabbar{
-    width: 100%;
-    .bgcl(@f3);
-    display: flex;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    a{
-        flex: 1;
-        text-align: center;
-        height: 1rem;
-        line-height: 1rem;
-        .fs(24);
-        &.router-link-active{
-            .cl(@red);
+.mint-tabbar{
+    .mint-tab-item{
+        padding: 0;
+        
+        a{
+            display: block;
+            height: 1rem;
+            line-height: 1rem;
+            .fs(18);
+            .cl(@3);
+
+            &.router-link-active{
+                .cl(@red);
+            }
         }
     }
 }

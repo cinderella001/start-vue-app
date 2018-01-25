@@ -1,33 +1,39 @@
 <style lang="less" scoped>
     @import '../../assets/styles/base.less';
     
-    /*活动列表的私有样式*/
-    h3{
-        text-align: center;
-        .fs(34);
-    }    
+    /*活动列表*/
     .container{
-        border-top: 0.1rem solid @red;
-        height: 10rem;
-        position: relative;
+        overflow: scroll;
+        padding-bottom: 1rem;
+        .bs;
+
         ul{
-            margin: 0;
             li{
                 border-bottom: 1px solid @3;
+                line-height: 1.5;
+                padding: 0 0.4rem;
                 .fs(14);
             }
         }        
+
+        .mint-loadmore{
+            /deep/.mint-loadmore-text{
+                .fs(18);
+            }    
+        }
     }
 </style>
 
 <template>
     <div class="page-acty">       
-        <!-- 一个简易的活动列表 -->
-        <h3>{{msg}}</h3>
-        <div class="container">
-            <scroller ref="myscroller"
-                :on-refresh="refresh"
-                :on-infinite="infinite"
+        <!-- 活动列表 -->
+        <mt-header :title="title"></mt-header>
+        <div class="container" :style="{height: containerHeight}" ref="container">
+            <mt-loadmore ref="loadmore"
+                :auto-fill="false"
+                :top-method="refresh" 
+                :bottom-method="loadMore" 
+                :bottom-all-loaded="allLoaded" 
             >
                 <ul>
                     <li v-for="(item,index) in lists" :key="index">
@@ -36,7 +42,7 @@
                         <p>{{item.desc}}</p>
                     </li>
                 </ul>
-            </scroller>
+            </mt-loadmore>            
         </div>
     </div>
 </template>
@@ -47,10 +53,11 @@
     export default {
         data(){
             return {                
-                msg: '活动列表',
+                title: '活动列表',
                 lists: [],
-                page: -1,
-                shouldLoadMore: true
+                page: 0,
+                allLoaded: false,
+                containerHeight: 0
             }
         },
         methods: {
@@ -68,37 +75,35 @@
                         if(page == 2) data = []; // 假设总共只有3页   
                         if(data.length) this.lists = this.lists.concat(data);        
                     }
-                    return data; // 一定要有返回值，否则调用infinite方法的时候会出错
+                    return data;
+                });
+            },
+           
+            // 下拉刷新
+            refresh(){
+                this.reqActy(0).then(() => {
+                    this.$refs.loadmore.onTopLoaded();
+                    this.allLoaded = false;
                 });
             },
 
-            // 下拉刷新
-            refresh(done){
-                console.log('refresh');
-                this.reqActy(0).then(() => {
-                    done();
+            // 上拉加载更多
+            loadMore(){
+                this.reqActy(this.page+1).then((data) => {
+                    if(!data.length){
+                        this.allLoaded = true;
+                    }
+                    this.$refs.loadmore.onBottomLoaded();
                 });
-            },       
-
-            // 上拉加载
-            infinite(done){
-                console.log('infinite');
-
-                // 当上拉加载到没有更多数据的时候，如果先下拉一段距离，再重新上拉到底，仍会继续调用infinite方法从而发出不必要的分页请求，所以需要在这里手动添加一个开关，当开关为true的时候才会执行后面的请求代码   
-                if(!this.shouldLoadMore){
-                    done(true); 
-                }else{
-                    this.reqActy(this.page+1).then((data) => {
-                        if(data.length == 0){
-                            done(true);
-                            this.shouldLoadMore = false;  // 手动关闭上拉加载的请求开关
-                        }else{
-                            done();
-                        }
-                    });                     
-                }
-            }                 
-        }  
+            }
+        },
+        created(){
+            this.refresh();
+        },
+        updated(){
+            // 初始化loadMore组件的高度
+            if(!this.containerHeight) this.containerHeight = document.documentElement.clientHeight - this.$refs.container.getBoundingClientRect().top + 'px';            
+        }
     }
 </script>
 

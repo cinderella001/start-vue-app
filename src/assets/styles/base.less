@@ -36,8 +36,6 @@
 
 // 1px边框
 .bor1(@color: @d9){
-	border: none;
-	position: relative;
     &::after{
         display: block;
         content: '';
@@ -50,11 +48,11 @@
         top: 0;
         transform: scale(0.5);      
         transform-origin: left top;    
+        pointer-events: none;
+        .zIdx(1);
     }
 }
 .bor1-top(@color: @d9){
-	border: none;
-	position: relative;
     &::before{
         display: block;
         content: '';
@@ -65,12 +63,11 @@
         left: 0;
         top: 0;
         transform: scaleY(0.5); 
-        transform-origin: 0 0;        
+        transform-origin: 0 0;      
+        .zIdx(1);  
     }
 }
 .bor1-bottom(@color: @d9){
-	border: none;
-	position: relative;
     &::after{
         display: block;
         content: '';
@@ -82,12 +79,13 @@
         bottom: 0;
         transform: scaleY(0.5);     
         transform-origin: 0 0;    
+        .zIdx(1);
     }
 }
 
 // 圆角
-.borR(@size: 5,@unit: px){
-	border-radius: unit(@size,@unit);
+.borR(@val){
+	border-radius: @val;
 }
 
 // 盒子类型
@@ -106,4 +104,12 @@
 }
 .bgSize(@x: 100%, @y: auto){
 	background-size: @x @y;
+}
+
+// 圆形图片
+.roundImg(@val){
+    width: @val;
+    height: @val;
+    .borR(@val);
+    object-fit: cover;
 }

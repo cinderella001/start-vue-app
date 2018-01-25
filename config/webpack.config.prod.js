@@ -10,8 +10,8 @@ const path = require('path'),
 module.exports = merge(baseConfig,{
     entry: {
         vendor: [
-            'vue','vue-router','vuex','axios','fastclick',
-            'vue-axios','vue-scroller'
+            'vue','vue-router','vuex',
+            'axios','vue-axios','fastclick'
         ]
     },    
 
@@ -42,16 +42,17 @@ module.exports = merge(baseConfig,{
                         })                      
                     }
                 }
-            }            
+            }                           
         ]
     },
 
 	plugins: [
 		new webpack.DefinePlugin({
 	        'process.env': {
-	            NODE_ENV: JSON.stringify(env),
-		    apiURL: JSON.stringify(address.apiURL),
-		    projectURL: JSON.stringify(address.projectURL)
+                NODE_ENV: env == 'dev' ? JSON.stringify('development') : JSON.stringify('production'),
+                myEnv: JSON.stringify(env),
+                apiURL: JSON.stringify(address.apiURL),
+                projectURL: JSON.stringify(address.projectURL)
 	        }      
 	    }), 
 
@@ -60,10 +61,6 @@ module.exports = merge(baseConfig,{
 	        compress: {
 	            warnings: false
 	        }
-	    }),
-
-	    new webpack.LoaderOptionsPlugin({
-	        minimize: true
 	    }),
 
 	    new ExtractTextPlugin({
