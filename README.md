@@ -47,8 +47,8 @@ npm install
 |——.babelrc         -- es6转码文件
 |——README.md        -- 使用文档
 |——favicon.ico      -- chrome浏览器网站图标
-|——.gitignore       -- .gitignore配置文件
-|——.editorconfig    -- .editorconfig配置文件
+|——.gitignore       
+|——.editorconfig    
 ```
 
 ## Usage
