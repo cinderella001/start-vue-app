@@ -39,5 +39,5 @@ module.exports = {
         // apiURL: 'http://api.normal.com', // 线上正式环境的接口域名
         projectURL: '/normal/',
         // projectURL: 'http://project.normal.com/app/' // 线上正式环境的项目地址    
-    },    
+    } 
 }

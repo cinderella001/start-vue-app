@@ -14,11 +14,11 @@ import router from './router';
 import store from './store';
 
 // 配置UI组件
-import './utils/component';
+import 'utils/component';
 // 配置插件
-import './utils/plugin';
+import 'utils/plugin';
 // 配置过滤器
-import './utils/filter';
+import 'utils/filter';
 
 // 处理移动端点击事件的300毫秒延迟
 const FastClick = require('fastclick');
