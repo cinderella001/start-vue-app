@@ -16,9 +16,9 @@ module.exports = {
 		port: '8080',
 		// outputDir: '' // 输出到内存
         browserUrl: 'http://' + ipv4 + ':8080/dev/index.html',
-    	apiURL: 'http://localhost:3000', 
+    	apiURL: 'http://localhost:3000',
         // apiURL: 'http://api.test.com', // 线上测试时的接口域名
-        projectURL: '/dev/' 
+        projectURL: '/dev/'
 	},
 	test: {
         host: ipv4,
@@ -28,7 +28,7 @@ module.exports = {
         apiURL: 'http://localhost:3000',
         // apiURL: 'http://api.test.com', // 线上测试环境的接口域名
         projectURL: '/test/',
-        // projectURL: 'http://project.test.com/app/' // 线上测试环境的项目地址     
+        // projectURL: 'http://project.test.com/app/' // 线上测试环境的项目地址
 	},
     normal: {
         host: ipv4,
