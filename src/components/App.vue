@@ -3,6 +3,25 @@
     @import '../assets/styles/iconfont/font.css';
     @import '~vue2-animate/src/vue2-animate.less';
     @import '../assets/styles/common.less';
+
+    /*根组件*/
+    .mint-tabbar{
+        .mint-tab-item{
+            padding: 0;
+            
+            a{
+                display: block;
+                height: 1rem;
+                line-height: 1rem;
+                .fs(18);
+                .cl(@3);
+
+                &.router-link-active{
+                    .cl(@red);
+                }
+            }
+        }
+    }    
 </style>
 
 <template>
@@ -12,9 +31,9 @@
 
         <!-- 底部菜单栏 -->
         <mt-tabbar fixed v-model="currTab" v-if="currTab">
-          <mt-tab-item id="index"><router-link to="/index">首页</router-link></mt-tab-item>
-          <mt-tab-item id="acty"><router-link to="/acty">活动</router-link></mt-tab-item>
-          <mt-tab-item id="mine"> <router-link to="/mine">我的</router-link></mt-tab-item>
+            <mt-tab-item id="index"><router-link to="/index">首页</router-link></mt-tab-item>
+            <mt-tab-item id="acty"><router-link to="/acty">活动</router-link></mt-tab-item>
+            <mt-tab-item id="mine"> <router-link to="/mine">我的</router-link></mt-tab-item>
         </mt-tabbar>        
     </div>
 </template>

@@ -43,17 +43,17 @@
         <!-- 个人信息 -->
         <mt-header :title="title">
             <mt-button slot="left" @click="back">返回</mt-button>     
-            <mt-button slot="right" @click="logout">退出登录</mt-button>
+            <mt-button slot="right" @click="logout">退出</mt-button>
         </mt-header>
         <div class="info">
-            <img class="avatar" v-lazy="myInfo.avatar" alt="" ref="avatar" />         
+            <img class="avatar" v-lazy="myInfo.avatar" alt="" />         
             <div class="username-email">
                 <div>{{'姓名：' + myInfo.username}}</div>
                 <div>{{'邮箱：' + myInfo.email}}</div>
             </div>
         </div>
         <div class="cells">
-            <mt-cell title="Vue" is-link to="https://cn.vuejs.org/v2/guide/" value="官方文档"></mt-cell>  
+            <mt-cell title="Vue" is-link to="https://cn.vuejs.org/v2/guide" value="官方文档"></mt-cell>  
             <mt-cell title="Mint UI" is-link to="https://github.com/ElemeFE/mint-ui" value="github地址"></mt-cell>
             <mt-cell title="start-vue-app" is-link to="https://github.com/brandonhulala/start-vue-app" value="前去点赞"></mt-cell>                           
         </div>
@@ -85,16 +85,7 @@
                 localStorage.removeItem('token');
                 this.$router.replace('/login');
             }
-        },          
-        mounted(){
-            // 当图片加载失败时
-            this.$refs.avatar.onerror = () => {
-                Toast({
-                    message: '不好意思，你的头像加载失败',
-                    duration: 2000
-                });                
-            }
-        } 
+        }          
     }
 </script>
 

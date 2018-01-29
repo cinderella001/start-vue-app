@@ -35,7 +35,7 @@
     <div class="page-index">      
         <!-- 首页状态 -->
         <div class="statusBar">
-            <h3>{{title + (myInfo? myInfo.username : '路人')}}</h3>
+            <h3>{{'你好啊，' + (myInfo? myInfo.username : '路人')}}</h3>
             <mt-button v-if="!myInfo" @click="$router.push('/login')">登录</mt-button>            
         </div>  
         <i class="iconfont icon-toys"></i>
@@ -49,7 +49,7 @@
     export default {
         data(){
             return {                
-                title: '你好啊，'
+
             }
         },
         computed: mapState([

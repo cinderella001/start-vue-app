@@ -26,7 +26,7 @@
 <template>
     <div class="page-login">        
         <!-- 一个简易的登录表单 -->
-        <h3>{{title}}</h3>
+        <h3>请先登录</h3>
         <div class="form">
             <mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
             <mt-field label="密码" placeholder="请输入密码" type="password" v-model="passwd"></mt-field>      
@@ -42,7 +42,6 @@
     export default {
         data(){
             return {                
-                title: '请先登录',
                 username: '',
                 passwd: ''
             }
@@ -63,8 +62,6 @@
                     return this.$http.post('/login',{
                         username,
                         passwd
-                    },{
-                        headers: {'Content-Type': 'application/json; charset=UTF-8'}
                     }).then((res)=>{
                         let data = res.data.data;
                         this.$store.dispatch('commitMyInfo',data.userInfo);

@@ -13,7 +13,9 @@ A simple CLI for scaffolding a web app with Vue.js.
 -es6
 -axios
 -animate
+-lodash
 -webpack
+-eruda
 -json-server
 -faker
 ```
